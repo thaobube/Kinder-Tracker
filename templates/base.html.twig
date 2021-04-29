@@ -1,19 +1,721 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+		<title>
+			{% block title %}Kinder-Tracker
+			{% endblock %}
+		</title>
+		{# Run `composer require symfony/webpack-encore-bundle`
+										           and uncomment the following Encore helpers to start using Symfony UX #}
+		{% block stylesheets %}
+			<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+			<link rel="stylesheet" href="https://lilo.qodeinteractive.com/wp-content/cache/minify/d6a97.css" media="all"/>
+			<link rel='stylesheet' id='rabbit_css-css' href='https://export.qodethemes.com/_toolbar/assets/css/rbt-modules.css?ver=5.5.1' type='text/css' media='all'/>
+			<link rel="stylesheet" href="https://lilo.qodeinteractive.com/wp-content/cache/minify/c138f.css" media="all"/>
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+			<link rel="stylesheet" href="https://lilo.qodeinteractive.com/wp-content/cache/minify/51b99.css" media="all"/>
+			<link rel="stylesheet" href="https://lilo.qodeinteractive.com/wp-content/cache/minify/e0f96.css" media="all"/>
+			<link rel='stylesheet' id='lilo-mikado-google-fonts-css' href='https://fonts.googleapis.com/css?family=Open+Sans%3A300%2C300italic%2C400%2C400italic%7CBaloo%3A300%2C300italic%2C400%2C400italic&#038;subset=latin-ext&#038;ver=1.0.0' type='text/css' media='all'/>
+
+			<style>
+				type="text/css" data-type="vc_custom-css" .mkdf-page-header .textwidget a:hover {
+					color: #FFF;
+				}
+			</style>
+			<style type="text/css" data-type="vc_shortcodes-custom-css">
+				.vc_custom_1527690191405 {
+					padding-top: 120px;
+					padding-bottom: 120px;
+				}
+
+				.vc_custom_1527689446123 {
+					padding-top: 80px !important;
+					padding-bottom: 50px !important;
+				}
+
+				.vc_custom_1526476912315 {
+					padding-top: 110px !important;
+					padding-bottom: 110px !important;
+				}
+
+				.vc_custom_1526477000698 {
+					padding-top: 100px !important;
+					padding-bottom: 60px !important;
+				}
+
+				.vc_custom_1526476994575 {
+					padding-bottom: 100px !important;
+				}
+
+				.vc_custom_1526477088442 {
+					padding-top: 95px !important;
+					padding-bottom: 50px !important;
+				}
+
+				.vc_custom_1526477000698 {
+					padding-top: 100px !important;
+					padding-bottom: 60px !important;
+				}
+
+				.vc_custom_1526477293384 {
+					padding-bottom: 75px !important;
+				}
+
+				.vc_custom_1525355334759 {
+					padding-top: 10px !important;
+					padding-right: 10px !important;
+					padding-bottom: 10px !important;
+				}
+			</style>
+			<style>
+				type="text/css" img.wp-smiley,
+				img.emoji {
+					display: inline !important;
+					border: none !important;
+					box-shadow: none !important;
+					height: 1em !important;
+					width: 1em !important;
+					margin: 0 0.07em !important;
+					vertical-align: -0.1em !important;
+					background: none !important;
+					padding: 0 !important;
+				}
+			</style>
+			<style id='rs-plugin-settings-inline-css' type='text/css'>
+				#rs-demo-id {}
+			</style>
+			<style id='woocommerce-inline-inline-css' type='text/css'>
+				.woocommerce form .form-row .required {
+					visibility: visible;
+				}
+			</style>
+			<style id='lilo-mikado-woo-inline-css' type='text/css'>
+				.page-id-595.mkdf-boxed .mkdf-wrapper {
+					background-image: url('https://lilo.qodeinteractive.com/wp-content/uploads/2018/05/page-pattern.png');
+					background-position: 0 0;
+					background-repeat: repeat;
+					background-attachment: scroll;
+				}
+
+				.page-id-595 .mkdf-page-header .mkdf-menu-area {
+					background-color: rgba(50, 53, 93, 1);
+				}
+
+				.page-id-595 .mkdf-content .mkdf-content-inner > .mkdf-container > .mkdf-container-inner,
+				.page-id-595 .mkdf-content .mkdf-content-inner > .mkdf-full-width > .mkdf-full-width-inner {
+					padding: 0;
+				}
+
+				.page-id-595 .mkdf-content .mkdf-content-inner > .mkdf-container > .mkdf-container-inner,
+				.page-id-595 .mkdf-content .mkdf-content-inner > .mkdf-full-width > .mkdf-full-width-inner {
+					padding: 0;
+				}
+			</style>
+
+		{% endblock %}
+		<link rel="icon" href="https://lilo.qodeinteractive.com/wp-content/uploads/2018/05/cropped-favicon-32x32.png" sizes="32x32"/>
+		<link rel="icon" href="https://lilo.qodeinteractive.com/wp-content/uploads/2018/05/cropped-favicon-192x192.png" sizes="192x192"/>
+		<link rel="apple-touch-icon" href="https://lilo.qodeinteractive.com/wp-content/uploads/2018/05/cropped-favicon-180x180.png"/>
+		<meta name="msapplication-TileImage" content="https://lilo.qodeinteractive.com/wp-content/uploads/2018/05/cropped-favicon-270x270.png"/>
+
+	</head>
+	<body>
+
+		<div class="mkdf-wrapper">
+			<div class="mkdf-wrapper-inner">
+				<header class="mkdf-page-header">
+					<div style="background-color:#32355D;" class="mkdf-menu-area mkdf-menu-left">
+						<div class="mkdf-grid">
+							<div class="mkdf-vertical-align-containers">
+								<div class="mkdf-position-left">
+									<div class="mkdf-position-left-inner">
+										<div class="mkdf-logo-wrapper">
+											<h1>
+												<span style="color: #ffffff;">Kinder-Tracker</span>
+												<span style="color: #ff6f96;">.</span>
+											</h1>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</header>
+						<header class="mkdf-mobile-header">
+							<div class="mkdf-mobile-header-inner">
+								<div class="mkdf-mobile-header-holder">
+									<div class="mkdf-grid">
+										<div class="mkdf-vertical-align-containers">
+											<div class="mkdf-vertical-align-containers">
+												<div class="mkdf-position-left">
+													<div class="mkdf-position-left-inner">
+														<div class="mkdf-mobile-logo-wrapper">
+															<a itemprop="url" href="https://lilo.qodeinteractive.com/" style="height: 40px">
+																<img itemprop="image" src="https://lilo.qodeinteractive.com/wp-content/themes/lilo/assets/img/logo.png" alt="Mobile Logo"/>
+															</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</header>
+						<a id='mkdf-back-to-top' href='#'>
+							<span class="mkdf-icon-stack-outer">
+								<span class="mkdf-icon-stack">
+									<span class="mkdf-icon-stack-inner">
+										<i class="mkdf-icon-dripicons dripicon dripicons-rocket "></i>
+									</span>
+								</span>
+							</span>
+							<span class="mkdf-back-to-top-inner">
+								<span class="mkdf-back-to-top-icon-back">
+									<i class="mkdf-icon-dripicons dripicon dripicons-rocket "></i>
+								</span>
+							</span>
+						</a>
+						{% block body %}{% endblock %}
+					</div>
+					<footer class="mkdf-page-footer ">
+						<div class="mkdf-footer-bottom-holder">
+							<div class="mkdf-footer-bottom-inner mkdf-grid">
+								<div class="mkdf-grid-row ">
+									<div class="mkdf-grid-col-12">
+										<div id="text-2" class="widget mkdf-footer-bottom-column-1 widget_text">
+											<div class="textwidget">
+												<p>
+													<span style="color: ad;">© 2021 PHP-Symfony
+																																																					Project by Thao Nguyen<br/>
+														Template by Qode Interactive</span>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</footer>
+				</div>
+			</div>
+			<div class="rbt-toolbar" data-theme="Lilo" data-featured="" data-button-position="65%" data-button-horizontal="right" data-button-alt="no"></div>
+
+
+			{% block javascripts %}
+				<script data-cfasync="false" type="text/javascript">
+					// <![CDATA[
+var gtm4wp_datalayer_name = "dataLayer";
+var dataLayer = dataLayer || [];
+// ]]>
+				</script>
+				<script type="text/javascript">
+					window._wpemojiSettings = {
+"baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/72x72\/",
+"ext": ".png",
+"svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/svg\/",
+"svgExt": ".svg",
+"source": {
+"concatemoji": "https:\/\/lilo.qodeinteractive.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.5.1"
+}
+};
+!function (e, a, t) {
+var r,
+n,
+o,
+i,
+p = a.createElement("canvas"),
+s = p.getContext && p.getContext("2d");
+function c(e, t) {
+var a = String.fromCharCode;
+s.clearRect(0, 0, p.width, p.height),
+s.fillText(a.apply(this, e), 0, 0);
+var r = p.toDataURL();
+return s.clearRect(0, 0, p.width, p.height),
+s.fillText(a.apply(this, t), 0, 0),
+r === p.toDataURL()
+}
+function l(e) {
+if (! s || ! s.fillText) 
+return !1;
+
+
+
+switch (s.textBaseline = "top", s.font = "600 32px Arial", e) {
+case "flag":
+return ! c([
+127987,
+65039,
+8205,
+9895,
+65039
+], [
+127987,
+65039,
+8203,
+9895,
+65039
+]) && (! c([
+55356, 56826, 55356, 56819
+], [
+55356,
+56826,
+8203,
+55356,
+56819
+]) && ! c([
+55356,
+57332,
+56128,
+56423,
+56128,
+56418,
+56128,
+56421,
+56128,
+56430,
+56128,
+56423,
+56128,
+56447
+], [
+55356,
+57332,
+8203,
+56128,
+56423,
+8203,
+56128,
+56418,
+8203,
+56128,
+56421,
+8203,
+56128,
+56430,
+8203,
+56128,
+56423,
+8203,
+56128,
+56447
+]));
+case "emoji":
+return ! c([
+55357,
+56424,
+8205,
+55356,
+57212
+], [
+55357,
+56424,
+8203,
+55356,
+57212
+])
+}
+return !1
+}
+function d(e) {
+var t = a.createElement("script");
+t.src = e,
+t.defer = t.type = "text/javascript",
+a.getElementsByTagName("head")[0].appendChild(t)
+}
+for (i = Array("flag", "emoji"), t.supports =
+{ everything: !0,
+everythingExceptFlag: !0
+}, o = 0; o < i.length; o++) 
+t.supports[i[o]] = l(i[o]),
+t.supports.everything = t.supports.everything && t.supports[i[o]],
+"flag" !== i[o] && (t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && t.supports[i[o]]);
+
+
+
+t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && ! t.supports.flag,
+t.DOMReady = !1,
+t.readyCallback = function () {
+t.DOMReady = !0
+},
+t.supports.everything || (n = function () {
+t.readyCallback()
+}, a.addEventListener ? (a.addEventListener("DOMContentLoaded", n, !1), e.addEventListener("load", n, !1)) : (e.attachEvent("onload", n), a.attachEvent("onreadystatechange", function () {
+"complete" === a.readyState && t.readyCallback()
+})), (r = t.source || {}).concatemoji ? d(r.concatemoji) : r.wpemoji && r.twemoji && (d(r.twemoji), d(r.wpemoji)))
+}(window, document, window._wpemojiSettings);
+				</script>
+				<script src="https://lilo.qodeinteractive.com/wp-content/cache/minify/ad506.js"></script>
+				<script type='text/javascript' id='wc-add-to-cart-js-extra'>
+					/* <![CDATA[ */
+var wc_add_to_cart_params = {
+"ajax_url": "\/wp-admin\/admin-ajax.php",
+"wc_ajax_url": "\/?wc-ajax=%%endpoint%%",
+"i18n_view_cart": "View cart",
+"cart_url": "https:\/\/lilo.qodeinteractive.com\/cart\/",
+"is_cart": "",
+"cart_redirect_after_add": "no"
+};
+/* ]]> */
+				</script>
+				<script src="https://lilo.qodeinteractive.com/wp-content/cache/minify/f1253.js"></script>
+				<script data-cfasync="false" type="text/javascript">
+					// <![CDATA[
+dataLayer.push({"pagePostType": "page", "pagePostType2": "single-page", "pagePostAuthor": "admin"}); // ]]>
+				</script>
+				<script data-cfasync="false">
+					// <![CDATA[
+(function (w, d, s, l, i) {
+w[l] = w[l] || [];
+w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+var f = d.getElementsByTagName(s)[0],
+j = d.createElement(s),
+dl = l != 'dataLayer' ? '&l=' + l : '';
+j.async = true;
+j.src = '//www.googletagmanager.com/gtm.' + 'js?id=' + i + dl;
+f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KTQ2BTD'); // ]]>
+				</script>
+
+				<noscript>
+					<style>
+						.woocommerce-product-gallery {
+							opacity: 1 !important;
+						}
+					</style>
+				</noscript>
+				<script type="text/javascript">
+					function setREVStartSize(e) {
+try {
+e.c = jQuery(e.c);
+var i = jQuery(window).width(),
+t = 9999,
+r = 0,
+n = 0,
+l = 0,
+f = 0,
+s = 0,
+h = 0;
+if (e.responsiveLevels && (jQuery.each(e.responsiveLevels, function (e, f) {
+f > i && (t = r = f, l = e),
+i > f && f > r && (r = f, n = e)
+}), t > r && (l = n)), f = e.gridheight[l] || e.gridheight[0] || e.gridheight, s = e.gridwidth[l] || e.gridwidth[0] || e.gridwidth, h = i / s, h = h > 1 ? 1 : h, f = Math.round(h * f), "fullscreen" == e.sliderLayout) {
+var u = (e.c.width(), jQuery(window).height());
+if (void 0 != e.fullScreenOffsetContainer) {
+var c = e.fullScreenOffsetContainer.split(",");
+if (c) 
+jQuery.each(c, function (e, i) {
+u = jQuery(i).length > 0 ? u - jQuery(i).outerHeight(!0) : u
+}),
+e.fullScreenOffset.split("%").length > 1 && void 0 != e.fullScreenOffset && e.fullScreenOffset.length > 0 ? u -= jQuery(window).height() * parseInt(e.fullScreenOffset, 0) / 100 : void 0 != e.fullScreenOffset && e.fullScreenOffset.length > 0 && (u -= parseInt(e.fullScreenOffset, 0))
+
+
+
+
+
+}
+f = u
+} else 
+void 0 != e.minHeight && f < e.minHeight && (f = e.minHeight);
+ e.c.closest(".rev_slider_wrapper").css({height: f})
+} catch (d) {
+console.log("Failure at Presize of Slider:" + d)
+}
+};
+				</script>
+				<noscript>
+					<style>
+						.wpb_animate_when_almost_visible {
+							opacity: 1;
+						}
+					</style>
+				</noscript>
+				<noscript>
+					<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTQ2BTD" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+				</noscript>
+				<script>
+					var htmlDiv = document.getElementById("rs-plugin-settings-inline-css");
+var htmlDivCss = "";
+if (htmlDiv) {
+htmlDiv.innerHTML = htmlDiv.innerHTML + htmlDivCss;
+} else {
+var htmlDiv = document.createElement("div");
+htmlDiv.innerHTML = "<style>" + htmlDivCss + "</style>";
+document.getElementsByTagName("head")[0].appendChild(htmlDiv.childNodes[0]);
+}
+				</script>
+				<script type="text/javascript">
+					if (setREVStartSize !== undefined) 
+setREVStartSize({
+c: '#rev_slider_6_2',
+responsiveLevels: [
+1920, 1700, 1025, 480
+],
+gridwidth: [
+1300, 1100, 600, 300
+],
+gridheight: [
+660, 570, 600, 550
+],
+sliderLayout: 'auto'
+});
+
+
+
+var revapi6,
+tpj;
+(function () {
+if (!/loaded|interactive|complete/.test(document.readyState)) 
+document.addEventListener("DOMContentLoaded", onLoad);
+ else 
+onLoad();
+
+
+
+function onLoad() {
+if (tpj === undefined) {
+tpj = jQuery;
+if ("off" == "on") 
+tpj.noConflict();
+
+
+
+}
+if (tpj("#rev_slider_6_2").revolution == undefined) {
+revslider_showDoubleJqueryError("#rev_slider_6_2");
+} else {
+revapi6 = tpj("#rev_slider_6_2").show().revolution({
+sliderType: "standard",
+jsFileLocation: "//lilo.qodeinteractive.com/wp-content/plugins/revslider/public/assets/js/",
+sliderLayout: "auto",
+dottedOverlay: "none",
+delay: 3000,
+navigation: {
+onHoverStop: "off"
+},
+viewPort: {
+enable: true,
+outof: "wait",
+visible_area: "99%",
+presize: false
+},
+responsiveLevels: [
+1920, 1700, 1025, 480
+],
+visibilityLevels: [
+1920, 1700, 1025, 480
+],
+gridwidth: [
+1300, 1100, 600, 300
+],
+gridheight: [
+660, 570, 600, 550
+],
+lazyType: "none",
+shadow: 0,
+spinner: "spinner2",
+stopLoop: "off",
+stopAfterLoops: -1,
+stopAtSlide: -1,
+shuffle: "off",
+autoHeight: "off",
+disableProgressBar: "on",
+hideThumbsOnMobile: "off",
+hideSliderAtLimit: 0,
+hideCaptionAtLimit: 0,
+hideAllCaptionAtLilmit: 0,
+debugMode: false,
+fallbacks: {
+simplifyAll: "off",
+nextSlideOnWindowFocus: "off",
+disableFocusListener: false
+}
+});
+}; /* END OF revapi call */
+
+}; /* END OF ON LOAD FUNCTION */
+}()); /* END OF WRAPPING FUNCTION */
+				</script>
+				<script>
+					var htmlDivCss = ' #rev_slider_6_2_wrapper .tp-loader.spinner2{ background-color: #ff6f96 !important; } ';
+var htmlDiv = document.getElementById('rs-plugin-settings-inline-css');
+if (htmlDiv) {
+htmlDiv.innerHTML = htmlDiv.innerHTML + htmlDivCss;
+} else {
+var htmlDiv = document.createElement('div');
+htmlDiv.innerHTML = '<style>' + htmlDivCss + '</style>';
+document.getElementsByTagName('head')[0].appendChild(htmlDiv.childNodes[0]);
+}
+				</script>
+				<script type="text/javascript">
+					function revslider_showDoubleJqueryError(sliderID) {
+var errorMessage = "Revolution Slider Error: You have some jquery.js library include that comes after the revolution files js include.";
+errorMessage += "<br> This includes make eliminates the revolution slider libraries, and make it not work.";
+errorMessage += "<br><br> To fix it you can:<br>&nbsp;&nbsp;&nbsp; 1. In the Slider Settings -> Troubleshooting set option:  <strong><b>Put JS Includes To Body</b></strong> option to true.";
+errorMessage += "<br>&nbsp;&nbsp;&nbsp; 2. Find the double jquery.js include and remove it.";
+errorMessage = "<span style='font-size:16px;color:#BC0C06;'>" + errorMessage + "</span>";
+jQuery(sliderID).show().html(errorMessage);
+}
+				</script>
+				<script type="text/javascript">
+					var c = document.body.className;
+c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+document.body.className = c;
+				</script>
+				<script src="https://lilo.qodeinteractive.com/wp-content/cache/minify/4b6b3.js"></script>
+				<script type='text/javascript' id='contact-form-7-js-extra'>
+					/* <![CDATA[ */
+var wpcf7 = {
+"apiSettings": {
+"root": "https:\/\/lilo.qodeinteractive.com\/wp-json\/contact-form-7\/v1",
+"namespace": "contact-form-7\/v1"
+},
+"cached": "1"
+};
+/* ]]> */
+				</script>
+				<script src="https://lilo.qodeinteractive.com/wp-content/cache/minify/0fef6.js"></script>
+				<script type='text/javascript' src='https://export.qodethemes.com/_toolbar/assets/js/rbt-modules.js?ver=5.5.1' id='rabbit_js-js'></script>
+				<script src="https://lilo.qodeinteractive.com/wp-content/cache/minify/fe83b.js"></script>
+				<script type='text/javascript' id='woocommerce-js-extra'>
+					/* <![CDATA[ */
+var woocommerce_params = {
+"ajax_url": "\/wp-admin\/admin-ajax.php",
+"wc_ajax_url": "\/?wc-ajax=%%endpoint%%"
+};
+/* ]]> */
+				</script>
+				<script src="https://lilo.qodeinteractive.com/wp-content/cache/minify/63a69.js"></script>
+				<script type='text/javascript' id='wc-cart-fragments-js-extra'>
+					/* <![CDATA[ */
+var wc_cart_fragments_params = {
+"ajax_url": "\/wp-admin\/admin-ajax.php",
+"wc_ajax_url": "\/?wc-ajax=%%endpoint%%",
+"cart_hash_key": "wc_cart_hash_67f38a0dba5b11a8afb5a54cf4cbbceb",
+"fragment_name": "wc_fragments_67f38a0dba5b11a8afb5a54cf4cbbceb"
+};
+/* ]]> */
+				</script>
+				<script src="https://lilo.qodeinteractive.com/wp-content/cache/minify/fdb97.js"></script>
+				<script type='text/javascript' id='mediaelement-core-js-before'>
+					var mejsL10n = {
+"language": "en",
+"strings": {
+"mejs.download-file": "Download File",
+"mejs.install-flash": "You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/",
+"mejs.fullscreen": "Fullscreen",
+"mejs.play": "Play",
+"mejs.pause": "Pause",
+"mejs.time-slider": "Time Slider",
+"mejs.time-help-text": "Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.",
+"mejs.live-broadcast": "Live Broadcast",
+"mejs.volume-help-text": "Use Up\/Down Arrow keys to increase or decrease volume.",
+"mejs.unmute": "Unmute",
+"mejs.mute": "Mute",
+"mejs.volume-slider": "Volume Slider",
+"mejs.video-player": "Video Player",
+"mejs.audio-player": "Audio Player",
+"mejs.captions-subtitles": "Captions\/Subtitles",
+"mejs.captions-chapters": "Chapters",
+"mejs.none": "None",
+"mejs.afrikaans": "Afrikaans",
+"mejs.albanian": "Albanian",
+"mejs.arabic": "Arabic",
+"mejs.belarusian": "Belarusian",
+"mejs.bulgarian": "Bulgarian",
+"mejs.catalan": "Catalan",
+"mejs.chinese": "Chinese",
+"mejs.chinese-simplified": "Chinese (Simplified)",
+"mejs.chinese-traditional": "Chinese (Traditional)",
+"mejs.croatian": "Croatian",
+"mejs.czech": "Czech",
+"mejs.danish": "Danish",
+"mejs.dutch": "Dutch",
+"mejs.english": "English",
+"mejs.estonian": "Estonian",
+"mejs.filipino": "Filipino",
+"mejs.finnish": "Finnish",
+"mejs.french": "French",
+"mejs.galician": "Galician",
+"mejs.german": "German",
+"mejs.greek": "Greek",
+"mejs.haitian-creole": "Haitian Creole",
+"mejs.hebrew": "Hebrew",
+"mejs.hindi": "Hindi",
+"mejs.hungarian": "Hungarian",
+"mejs.icelandic": "Icelandic",
+"mejs.indonesian": "Indonesian",
+"mejs.irish": "Irish",
+"mejs.italian": "Italian",
+"mejs.japanese": "Japanese",
+"mejs.korean": "Korean",
+"mejs.latvian": "Latvian",
+"mejs.lithuanian": "Lithuanian",
+"mejs.macedonian": "Macedonian",
+"mejs.malay": "Malay",
+"mejs.maltese": "Maltese",
+"mejs.norwegian": "Norwegian",
+"mejs.persian": "Persian",
+"mejs.polish": "Polish",
+"mejs.portuguese": "Portuguese",
+"mejs.romanian": "Romanian",
+"mejs.russian": "Russian",
+"mejs.serbian": "Serbian",
+"mejs.slovak": "Slovak",
+"mejs.slovenian": "Slovenian",
+"mejs.spanish": "Spanish",
+"mejs.swahili": "Swahili",
+"mejs.swedish": "Swedish",
+"mejs.tagalog": "Tagalog",
+"mejs.thai": "Thai",
+"mejs.turkish": "Turkish",
+"mejs.ukrainian": "Ukrainian",
+"mejs.vietnamese": "Vietnamese",
+"mejs.welsh": "Welsh",
+"mejs.yiddish": "Yiddish"
+}
+};
+				</script>
+				<script src="https://lilo.qodeinteractive.com/wp-content/cache/minify/864c2.js"></script>
+				<script type='text/javascript' id='mediaelement-js-extra'>
+					/* <![CDATA[ */
+var _wpmejsSettings = {
+"pluginPath": "\/wp-includes\/js\/mediaelement\/",
+"classPrefix": "mejs-",
+"stretching": "responsive"
+};
+/* ]]> */
+				</script>
+				<script src="https://lilo.qodeinteractive.com/wp-content/cache/minify/d976d.js"></script>
+				<script type='text/javascript' src='//maps.googleapis.com/maps/api/js?key=AIzaSyDNOvuDAZGJk4qApM9xWasQFPHQ630fbcU&#038;ver=5.5.1' id='lilo-mikado-google-map-api-js'></script>
+				<script type='text/javascript' id='lilo-mikado-modules-js-extra'>
+					/* <![CDATA[ */
+var mkdfGlobalVars = {
+"vars": {
+"mkdfAddForAdminBar": 0,
+"mkdfElementAppearAmount": -100,
+"mkdfAjaxUrl": "https:\/\/lilo.qodeinteractive.com\/wp-admin\/admin-ajax.php",
+"mkdfStickyHeaderHeight": 0,
+"mkdfStickyHeaderTransparencyHeight": 70,
+"mkdfTopBarHeight": 0,
+"mkdfLogoAreaHeight": 0,
+"mkdfMenuAreaHeight": 100,
+"mkdfMobileHeaderHeight": 70
+}
+};
+var mkdfPerPageVars = {
+"vars": {
+"mkdfMobileHeaderHeight": 70,
+"mkdfStickyScrollAmount": 0,
+"mkdfHeaderTransparencyHeight": 100,
+"mkdfHeaderVerticalWidth": 0
+}
+};
+/* ]]> */
+				</script>
+				<script src="https://lilo.qodeinteractive.com/wp-content/cache/minify/12608.js"></script>
+			{% endblock %}
+		</body>
+	</body>
 </html>
