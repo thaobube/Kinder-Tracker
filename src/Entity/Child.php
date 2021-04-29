@@ -12,6 +12,17 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Child
 {
+    
+    public function hydrate(array $init)
+    {
+        foreach ($init as $key => $value) {
+            $method = "set" . ucfirst($key);
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
+    }
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

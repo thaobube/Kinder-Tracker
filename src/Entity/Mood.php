@@ -10,6 +10,17 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Mood
 {
+    // crée par nous mêmes, ainsi que le constructeur (vérifiez!)
+    public function hydrate(array $init)
+    {
+        foreach ($init as $key => $value) {
+            $method = "set" . ucfirst($key);
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
+    }
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
