@@ -10,7 +10,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class DayRecord
 {
-    // crée par nous mêmes, ainsi que le constructeur (vérifiez!)
+    
+    public function __construct(array $init)
+    {
+        $this->hydrate ($init);
+    }
+
     public function hydrate(array $init)
     {
         foreach ($init as $key => $value) {
@@ -20,6 +25,7 @@ class DayRecord
             }
         }
     }
+
 
     /**
      * @ORM\Id
@@ -107,6 +113,11 @@ class DayRecord
      * @ORM\OneToOne(targetEntity=Level::class, cascade={"persist", "remove"})
      */
     private $afternoonSnackQty;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $date;
 
     public function getId(): ?int
     {
@@ -301,6 +312,18 @@ class DayRecord
     public function setAfternoonSnackQty(?Level $afternoonSnackQty): self
     {
         $this->afternoonSnackQty = $afternoonSnackQty;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(?\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }

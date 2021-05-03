@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Child
 {
+    public function __construct(array $init)
+    {
+        $this->hydrate ($init);
+        $this->dayRecords = new ArrayCollection();
+    }
     
     public function hydrate(array $init)
     {
@@ -71,19 +76,14 @@ class Child
     private $class;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, mappedBy="Child", cascade={"persist", "remove"})
-     */
-    private $user;
-
-    /**
      * @ORM\OneToMany(targetEntity=DayRecord::class, mappedBy="Child")
      */
     private $dayRecords;
 
-    public function __construct()
-    {
-        $this->dayRecords = new ArrayCollection();
-    }
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="child", cascade={"persist", "remove"})
+     */
+    private $user;
 
     public function getId(): ?int
     {
@@ -186,28 +186,6 @@ class Child
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        // unset the owning side of the relation if necessary
-        if ($user === null && $this->user !== null) {
-            $this->user->setChild(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($user !== null && $user->getChild() !== $this) {
-            $user->setChild($this);
-        }
-
-        $this->user = $user;
-
-        return $this;
-    }
-
     /**
      * @return Collection|DayRecord[]
      */
@@ -237,4 +215,17 @@ class Child
 
         return $this;
     }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
 }

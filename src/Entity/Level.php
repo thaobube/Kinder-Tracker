@@ -10,7 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Level
 {
-    // crée par nous mêmes, ainsi que le constructeur (vérifiez!)
+    public function __construct(array $init)
+    {
+        $this->hydrate ($init);
+    }
+    
     public function hydrate(array $init)
     {
         foreach ($init as $key => $value) {

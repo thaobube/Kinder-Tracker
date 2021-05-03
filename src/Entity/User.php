@@ -4,23 +4,14 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
-class User
+class User implements UserInterface
 {
-
-        // crée par nous mêmes, ainsi que le constructeur (vérifiez!)
-        public function hydrate(array $init)
-        {
-            foreach ($init as $key => $value) {
-                $method = "set" . ucfirst($key);
-                if (method_exists($this, $method)) {
-                    $this->$method($value);
-                }
-            }
-        }
+   
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -29,57 +20,120 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=180, unique=true)
      */
-    private $userName;
+    private $username;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
+    /**
+     * @var string The hashed password
+     * @ORM\Column(type="string")
      */
     private $password;
 
     /**
-     * @ORM\OneToOne(targetEntity=Child::class, inversedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Child::class, mappedBy="user", cascade={"persist", "remove"})
      */
-    private $Child;
+    private $child;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUserName(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
     {
-        return $this->userName;
+        return (string) $this->username;
     }
 
-    public function setUserName(?string $userName): self
+    public function setUsername(string $username): self
     {
-        $this->userName = $userName;
+        $this->username = $username;
 
         return $this;
     }
 
-    public function getPassword(): ?string
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        return $this->password;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
-    public function setPassword(?string $password): self
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
+    {
+        return (string) $this->password;
+    }
+
+    public function setPassword(string $password): self
     {
         $this->password = $password;
 
         return $this;
     }
 
-    public function getChild(): ?Child
+    /**
+     * Returning a salt is only needed, if you are not using a modern
+     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+     *
+     * @see UserInterface
+     */
+    public function getSalt(): ?string
     {
-        return $this->Child;
+        return null;
     }
 
-    public function setChild(?Child $Child): self
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
     {
-        $this->Child = $Child;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+    public function getChild(): ?Child
+    {
+        return $this->child;
+    }
+
+    public function setChild(?Child $child): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($child === null && $this->child !== null) {
+            $this->child->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($child !== null && $child->getUser() !== $this) {
+            $child->setUser($this);
+        }
+
+        $this->child = $child;
 
         return $this;
     }
