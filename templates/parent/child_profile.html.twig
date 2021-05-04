@@ -12,7 +12,7 @@
 							<div style="padding-top: 30px;" class="mkdf-row-grid-section">
 								<div style="display: flex; flex-wrap: wrap; justify-content: space-around;" class="content-top">
 									<div class="mkdf-iwt-icon home-icon">
-										<a itemprop="url" href="#" target="_self">
+										<a href="{{ path ("parent_home") }}">
 											<div class="mkdf-iwt-custom-icon">
 												<div class="mkdf-iwt-custom-icon-shape" style="background-color:#fcf4eb"></div>
 												<img width="115" height="115" src="https://lilo.qodeinteractive.com/wp-content/uploads/2018/04/icon-with-text-1.png" class="attachment-full size-full" alt="c" loading="lazy" srcset="https://lilo.qodeinteractive.com/wp-content/uploads/2018/04/icon-with-text-1.png 115w, https://lilo.qodeinteractive.com/wp-content/uploads/2018/04/icon-with-text-1-100x100.png 100w" sizes="(max-width: 115px) 100vw, 115px"/>
@@ -29,7 +29,7 @@
 												<div class="mkdf-section-title-holder   mkdf-st-subtitle-pos-under">
 													<div class="mkdf-st-inner">
 														<h2 class="mkdf-st-title">
-															Minh Duy's Profile
+															{{child.firstName}}'s Profile
 														</h2>
 														<span class="mkdf-st-subtitle" style="color: #ffffff;background-color: #dce086;margin: 13px 0 ">
 															Edit Profile
@@ -41,14 +41,14 @@
 														<div class="vc_column-inner">
 															<div class="wpb_wrapper">
 																<div class="mkdf-icon-list-holder " style="margin-bottom: 15px">
-																	<p class="mkdf-il-text" style="padding-left: 20px">Date of Birth: 15/04/2019</p>
+																	<p class="mkdf-il-text" style="padding-left: 20px">Date of Birth: {{child.birthDate|date('d-m-Y')}}</p>
 																</div>
 
 																<div class="mkdf-icon-list-holder " style="margin-bottom: 15px">
-																	<p class="mkdf-il-text" style="padding-left: 20px">Address: Rue du ABC 34</p>
+																	<p class="mkdf-il-text" style="padding-left: 20px">Address: {{child.address}}</p>
 																</div>
 																<div class="mkdf-icon-list-holder " style="margin-bottom: 15px">
-																	<p class="mkdf-il-text" style="padding-left: 20px">Class: Butterfly</p>
+																	<p class="mkdf-il-text" style="padding-left: 20px">Class: {{child.class}}</p>
 																</div>
 															</div>
 														</div>
@@ -57,13 +57,13 @@
 														<div class="vc_column-inner">
 															<div class="wpb_wrapper">
 																<div class="mkdf-icon-list-holder " style="margin-bottom: 15px">
-																	<p class="mkdf-il-text" style="padding-left: 20px">Parent's Email: example@gmail.com</p>
+																	<p class="mkdf-il-text" style="padding-left: 20px">Parent's Email: {{child.parentEmail}}</p>
 																</div>
 																<div class="mkdf-icon-list-holder " style="margin-bottom: 15px">
-																	<p class="mkdf-il-text" style="padding-left: 20px">Father's Mobile: 07895165046</p>
+																	<p class="mkdf-il-text" style="padding-left: 20px">Father's Mobile: {{child.fatherPhone}}</p>
 																</div>
 																<div class="mkdf-icon-list-holder " style="margin-bottom: 15px">
-																	<p class="mkdf-il-text" style="padding-left: 20px">Mother's Mobile: 07894198046</p>
+																	<p class="mkdf-il-text" style="padding-left: 20px">Mother's Mobile: {{child.motherPhone}}</p>
 																</div>
 															</div>
 														</div>

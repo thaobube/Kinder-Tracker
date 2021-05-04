@@ -6,8 +6,6 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Child;
 use App\Entity\DayRecord;
-use App\Entity\Level;
-use App\Entity\Mood;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class DayRecordFixtures extends Fixture implements DependentFixtureInterface
@@ -17,10 +15,6 @@ class DayRecordFixtures extends Fixture implements DependentFixtureInterface
 
         $repChild = $manager->getRepository(Child::class);
         $childs = $repChild->findAll();
-        $repMood = $manager->getRepository(Mood::class);
-        $moods = $repMood->findAll();
-        $repLevel = $manager->getRepository(Level::class);
-        $levels = $repLevel->findAll();
 
         // Create a list contain 10 days until today
         $today = new \DateTime('NOW');
@@ -55,6 +49,9 @@ class DayRecordFixtures extends Fixture implements DependentFixtureInterface
     
                 $napDurationList = ['12h00 - 13h30', '12h15 - 13h50', '12h30 - 13h30'];
                 $otherInfoList = ['Potty training is ok', 'Refuse to use potty', 'Fighting Nap', 'Play well with others'];
+
+                $moods = ['Happy', 'Unhappy', 'Tired', 'Cry', 'Sick'];
+                $levels = ['Super', 'Moderate', 'Bad'];
     
                 if ($isAtHomeValue == 1) {
                     $dayRecord = new DayRecord([
@@ -108,8 +105,6 @@ class DayRecordFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            MoodFixtures::class,
-            LevelFixtures::class,
             ChildFixtures::class,
         ];
     }

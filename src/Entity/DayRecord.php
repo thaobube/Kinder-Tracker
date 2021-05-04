@@ -89,35 +89,36 @@ class DayRecord
      */
     private $Child;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Mood::class, cascade={"persist", "remove"})
-     */
-    private $homeMood;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Mood::class, cascade={"persist", "remove"})
-     */
-    private $daycareMood;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Level::class, cascade={"persist", "remove"})
-     */
-    private $morningSnackQty;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Level::class, cascade={"persist", "remove"})
-     */
-    private $lunchQty;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Level::class, cascade={"persist", "remove"})
-     */
-    private $afternoonSnackQty;
-
+    
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $date;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $homeMood;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $daycareMood;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $morningSnackQty;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $lunchQty;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $afternoonSnackQty;
 
     public function getId(): ?int
     {
@@ -256,66 +257,7 @@ class DayRecord
         return $this;
     }
 
-    public function getHomeMood(): ?Mood
-    {
-        return $this->homeMood;
-    }
-
-    public function setHomeMood(?Mood $homeMood): self
-    {
-        $this->homeMood = $homeMood;
-
-        return $this;
-    }
-
-    public function getDaycareMood(): ?Mood
-    {
-        return $this->daycareMood;
-    }
-
-    public function setDaycareMood(?Mood $daycareMood): self
-    {
-        $this->daycareMood = $daycareMood;
-
-        return $this;
-    }
-
-    public function getMorningSnackQty(): ?Level
-    {
-        return $this->morningSnackQty;
-    }
-
-    public function setMorningSnackQty(?Level $morningSnackQty): self
-    {
-        $this->morningSnackQty = $morningSnackQty;
-
-        return $this;
-    }
-
-    public function getLunchQty(): ?Level
-    {
-        return $this->lunchQty;
-    }
-
-    public function setLunchQty(?Level $lunchQty): self
-    {
-        $this->lunchQty = $lunchQty;
-
-        return $this;
-    }
-
-    public function getAfternoonSnackQty(): ?Level
-    {
-        return $this->afternoonSnackQty;
-    }
-
-    public function setAfternoonSnackQty(?Level $afternoonSnackQty): self
-    {
-        $this->afternoonSnackQty = $afternoonSnackQty;
-
-        return $this;
-    }
-
+    
     public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
@@ -324,6 +266,66 @@ class DayRecord
     public function setDate(?\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getHomeMood(): ?string
+    {
+        return $this->homeMood;
+    }
+
+    public function setHomeMood(?string $homeMood): self
+    {
+        $this->homeMood = $homeMood;
+
+        return $this;
+    }
+
+    public function getDaycareMood(): ?string
+    {
+        return $this->daycareMood;
+    }
+
+    public function setDaycareMood(?string $daycareMood): self
+    {
+        $this->daycareMood = $daycareMood;
+
+        return $this;
+    }
+
+    public function getMorningSnackQty(): ?string
+    {
+        return $this->morningSnackQty;
+    }
+
+    public function setMorningSnackQty(?string $morningSnackQty): self
+    {
+        $this->morningSnackQty = $morningSnackQty;
+
+        return $this;
+    }
+
+    public function getLunchQty(): ?string
+    {
+        return $this->lunchQty;
+    }
+
+    public function setLunchQty(?string $lunchQty): self
+    {
+        $this->lunchQty = $lunchQty;
+
+        return $this;
+    }
+
+    public function getAfternoonSnackQty(): ?string
+    {
+        return $this->afternoonSnackQty;
+    }
+
+    public function setAfternoonSnackQty(?string $afternoonSnackQty): self
+    {
+        $this->afternoonSnackQty = $afternoonSnackQty;
 
         return $this;
     }
