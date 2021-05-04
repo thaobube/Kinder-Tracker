@@ -1,20 +1,70 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ParentController!{% endblock %}
+{% block title %}Log in!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<div class="mkdf-content">
+		<div class="mkdf-content-inner">
+			<div class="mkdf-full-width">
+				<div class="mkdf-full-width-inner">
+					<div class="mkdf-grid-row">
+						<div class="mkdf-page-content-holder mkdf-grid-col-12">
+							<div class="mkdf-row-grid-section-wrapper mkdf-content-aligment-center" style="background-image: url(https://lilo.qodeinteractive.com/wp-content/uploads/2018/05/h3-backround-img-2.jpg);background-position: center center; height: 100vh;">
+								<div style=" width: 400px; padding: 20px; background: #9ad8d3; border-radius: 10px; margin-left: 150px; ">
+									<form method="post" bg-gradient-primary>
+										{% if error %}
+											<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+										{% endif %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+										{# {% if app.user %}
+														<div class="mb-3">
+															You are logged in as
+															{{ app.user.username }},
+															<a href="{{ path('app_logout') }}">Logout</a>
+														</div>
+													{% endif %} #}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/Project_Symfony_Thao/KinderTracker/src/Controller/ParentController.php'|file_link(0) }}">src/Controller/ParentController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/Project_Symfony_Thao/KinderTracker/templates/parent/index.html.twig'|file_link(0) }}">templates/parent/index.html.twig</a></code></li>
-    </ul>
-</div>
+										<h1 class="h3 mb-3 font-weight-normal" style="color: #ffffff;">Track Kid's Activities</h1>
+										<label for="inputUsername" style="color: #ffffff;">Username</label>
+										<input type="text" value="{{ last_username }}" name="username" id="inputUsername" required autofocus class="form-control"/>
+
+										<label for="inputPassword" style="color: #ffffff;">Password</label>
+										<input type="password" name="password" id="inputPassword" class="form-control" required>
+
+										<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+										<button type="submit" class="mkdf-btn mkdf-btn-medium mkdf-btn-solid" style="padding: 5px 15px;">
+											Log in
+										</button>
+									</form>
+								</div>
+								<div class="mkdf-row-grid-section">
+									<div class="vc_row wpb_row vc_row-fluid vc_custom_1527690191405">
+										<div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-5 vc_col-md-7">
+											<div class="vc_column-inner">
+												<div class="wpb_wrapper">
+													<div class="mkdf-elements-holder   mkdf-one-column  mkdf-responsive-mode-768 ">
+														<div class="mkdf-eh-item     " style="background-color: #9ad8d3;border-radius: 10px" data-item-class="mkdf-eh-custom-7897" data-1367-1600="18px 40px 55px" data-1025-1366="18px 40px 55px" data-769-1024="18px 30px 55px" data-681-768="18px 40px 55px" data-680="18px 30px 55px">
+															<div class="mkdf-eh-item-inner"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-7">
+											<div class="vc_column-inner">
+												<div class="wpb_wrapper"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 {% endblock %}

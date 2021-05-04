@@ -18,7 +18,7 @@ class ChildFixtures extends Fixture implements DependentFixtureInterface
         $repUser = $manager->getRepository(User::class);
         $users = $repUser->findAll();
         
-        for ($i =0; $i < 50; $i ++) {
+        for ($i =0; $i < 10; $i ++) {
             $classes = ['Butterfly', 'Ant','Bee'];
             $child = new Child([
                 'firstName' => $faker->firstName,

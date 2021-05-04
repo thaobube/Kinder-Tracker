@@ -12,7 +12,7 @@
 							<div style="padding-top: 30px;" class="mkdf-row-grid-section">
 								<div style="display: flex; justify-content: space-between; flex-wrap: wrap;" class="content-top">
 									<div class="mkdf-iwt-icon home-icon">
-										<a href="{{ path ("parent_home") }}">
+										<a itemprop="url" href="#" target="_self">
 											<div class="mkdf-iwt-custom-icon">
 												<div class="mkdf-iwt-custom-icon-shape" style="background-color:#fcf4eb"></div>
 												<img width="115" height="115" src="https://lilo.qodeinteractive.com/wp-content/uploads/2018/04/icon-with-text-1.png" class="attachment-full size-full" alt="c" loading="lazy" srcset="https://lilo.qodeinteractive.com/wp-content/uploads/2018/04/icon-with-text-1.png 115w, https://lilo.qodeinteractive.com/wp-content/uploads/2018/04/icon-with-text-1-100x100.png 100w" sizes="(max-width: 115px) 100vw, 115px"/>
@@ -24,23 +24,22 @@
 									</div>
 									<div>
 										<h1 class="mkdf-404-title">
-											{{child.firstName}}
+											Minh Duy
 											<span style="color: #ff6f96;" class="mkdf-404-title-colored-part">
 												-
 											</span>
-											Class:
-											{{child.class}}
+											Class: Butterfly
 										</h1>
 										<h1>
 											<span style="color: #ff6f96;" class="mkdf-404-title-colored-part">
-												{{dayRecord.date|date('d-m-Y')}}
+												14/04/2021
 											</span>
 										</h1>
 
 									</div>
 									<div class="mkdf-iwt clearfix  mkdf-iwt-icon-left mkdf-iwt-icon-medium  mkdf-custom-icon-mkdf-circle">
 										<div class="mkdf-iwt-icon">
-											<a href="{{ path ("child_profile") }}">
+											<a itemprop="url" href="#" target="_self">
 												<div class="mkdf-iwt-custom-icon">
 													<div class="mkdf-iwt-custom-icon-shape" style="background-color:#fcf4eb"></div>
 													<img width="115" height="115" src="https://lilo.qodeinteractive.com/wp-content/uploads/2018/04/icon-with-text-6.png" class="attachment-full size-full" alt="c" loading="lazy" srcset="https://lilo.qodeinteractive.com/wp-content/uploads/2018/04/icon-with-text-6.png 115w, https://lilo.qodeinteractive.com/wp-content/uploads/2018/04/icon-with-text-6-100x100.png 100w" sizes="(max-width: 115px) 100vw, 115px"/>
@@ -73,37 +72,38 @@
 																</div>
 																<div role="form" class="wpcf7" id="wpcf7-f734-p582-o2" lang="en-US" dir="ltr">
 																	<div class="screen-reader-response" role="alert" aria-live="polite"></div>
-																		<div style="text-align: left; margin-bottom: 30px;">
-																			<h4 style="text-align: left; color: #ff6f96; display: inline-block;">Home Description:
-																			</h4>
-																			<p class="mkdf-pp-text" style="color: #ffffff; font-size: 20px;">
-																				{{dayRecord.homeDescription}}
-																			</p>
-
+																	<form action="/our-caregivers/#wpcf7-f734-p582-o2" method="post" class="wpcf7-form init" novalidate="novalidate">
+																		<div style="display: none;">
+																			<input type="hidden" name="_wpcf7" value="734"/>
+																			<input type="hidden" name="_wpcf7_version" value="5.2.2"/>
+																			<input type="hidden" name="_wpcf7_locale" value="en_US"/>
+																			<input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f734-p582-o2"/>
+																			<input type="hidden" name="_wpcf7_container_post" value="582"/>
+																			<input type="hidden" name="_wpcf7_posted_data_hash" value=""/>
 																		</div>
-
-																		<div class="mkdf-pp-text" style="color: #ffffff; font-size: 20px; margin: 50px 0px 30px 0px;">
-
-																			{% for key, value in moods %}
-																				{% if value == dayRecord.homeMood %}
-																					<span style="margin-right: 15px;">
-																						<img src="{{ asset ('assets/images/checked.png') }}" alt=""/>
-																						<img src="{{ asset ('assets/images/'~value~'.png') }}" alt=""/>{{ value|capitalize }}
-																					</span>
-																				{% else %}
-																					<span style="margin-right: 15px;">
-																						<img src="{{ asset ('assets/images/unchecked.png') }}" alt=""/>
-																						<img src="{{ asset ('assets/images/'~value~'.png') }}" alt=""/>{{ value|capitalize }}
-																					</span>
-																				{% endif %}
-																			{% endfor %}
+																		<p>
+																			<span class="wpcf7-form-control-wrap your-message">
+																				<textarea name="your-message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" placeholder="Everything is good. Pick up at 15h00 for vaccination"></textarea>
+																			</span>
+																		</p>
+																		<div class="mkdf-pp-text" style="color: #ffffff; font-size: 20px; margin: 30px 0px;">
+																			<input type="radio" name="home_mood" value="happy" checked="checked">
+																			<label for="happy"><img src="{{ asset ('assets/images/happy.png') }}" alt=""/>Happy</label>
+																			<input type="radio" name="home_mood" value="unhappy" disabled>
+																			<label for="unhappy"><img src="{{ asset ('assets/images/unhappy.png') }}" alt=""/>Unhappy</label>
+																			<input type="radio" name="home_mood" value="tired" disabled>
+																			<label for="tired"><img src="{{ asset ('assets/images/tired.png') }}" alt=""/>Tired</label>
+																			<input type="radio" name="home_mood" value="cry" disabled>
+																			<label for="cry"><img src="{{ asset ('assets/images/cry.png') }}" alt=""/>Cry</label>
+																			<input type="radio" name="home_mood" value="sick" disabled>
+																			<label for="sick"><img src="{{ asset ('assets/images/sick.png') }}" alt=""/>Sick</label>
 																		</div>
-																		<div>
-																			<a class="mkdf-btn mkdf-btn-medium mkdf-btn-solid" style="padding: 10px 25px;">
-																				Edit
-																			</a>
-																		</div>
-
+																		<p>
+																			<input type="submit" value="Edit" class="wpcf7-form-control wpcf7-submit"/>
+																			<input type="submit" value="Save" class="wpcf7-form-control wpcf7-submit"/>
+																		</p>
+																		<div class="wpcf7-response-output" role="alert" aria-hidden="true"></div>
+																	</form>
 																</div>
 
 															</div>
@@ -139,55 +139,40 @@
 																		<div style="text-align: left; margin-bottom: 30px;">
 																			<h4 style="text-align: left; color: #ff6f96; display: inline-block;">Morning Snack:
 																			</h4>
-																			<span class="mkdf-pp-text" style="color: #ffffff; font-size: 20px;">{{dayRecord.morningSnackFood}}</span>
+																			<span class="mkdf-pp-text" style="color: #ffffff; font-size: 20px;">Mango</span>
 																			<div class="mkdf-pp-text" style="color: #ffffff; font-size: 20px; margin-left: 50px;">
-																				{% for key, value in levels %}
-																					{% if value == dayRecord.morningSnackQty %}
-																						<span style="margin-right: 15px;">
-																							<img src="{{ asset ('assets/images/checked.png') }}" alt=""/>{{ value|capitalize }}
-																						</span>
-																					{% else %}
-																						<span style="margin-right: 15px;">
-																							<img src="{{ asset ('assets/images/unchecked.png') }}" alt=""/>{{ value|capitalize }}
-																						</span>
-																					{% endif %}
-																				{% endfor %}
+																				<input type="radio" name="morning" value="super" checked="checked">
+																				<label for="super">Super</label>
+																				<input type="radio" name="morning" value="moderate" disabled>
+																				<label for="moderate">Moderate</label>
+																				<input type="radio" name="morning" value="bad" disabled>
+																				<label for="bad">Bad</label>
 																			</div>
 																		</div>
 																		<div style="text-align: left; margin-bottom: 30px;">
 																			<h4 style="text-align: left; color: #ff6f96; display: inline-block;">Lunch:
 																			</h4>
-																			<span class="mkdf-pp-text" style="color: #ffffff; font-size: 20px;">{{dayRecord.lunchFood}}</span>
+																			<span class="mkdf-pp-text" style="color: #ffffff; font-size: 20px;">Beef spaghetti</span>
 																			<div class="mkdf-pp-text" style="color: #ffffff; font-size: 20px; margin-left: 50px;">
-																				{% for key, value in levels %}
-																					{% if value == dayRecord.lunchQty %}
-																						<span style="margin-right: 15px;">
-																							<img src="{{ asset ('assets/images/checked.png') }}" alt=""/>{{ value|capitalize }}
-																						</span>
-																					{% else %}
-																						<span style="margin-right: 15px;">
-																							<img src="{{ asset ('assets/images/unchecked.png') }}" alt=""/>{{ value|capitalize }}
-																						</span>
-																					{% endif %}
-																				{% endfor %}
+																				<input type="radio" name="lunch" value="super" disabled>
+																				<label for="super">Super</label>
+																				<input type="radio" name="lunch" value="moderate" checked="checked">
+																				<label for="moderate">Moderate</label>
+																				<input type="radio" name="lunch" value="bad" disabled>
+																				<label for="bad">Bad</label>
 																			</div>
 																		</div>
 																		<div style="text-align: left; margin-bottom: 30px;">
 																			<h4 style="text-align: left; color: #ff6f96; display: inline-block;">Afternoon Snack:
 																			</h4>
-																			<span class="mkdf-pp-text" style="color: #ffffff; font-size: 20px;">{{dayRecord.afternoonSnackFood}}</span>
+																			<span class="mkdf-pp-text" style="color: #ffffff; font-size: 20px;">Yogurt</span>
 																			<div class="mkdf-pp-text" style="color: #ffffff; font-size: 20px; margin-left: 50px;">
-																				{% for key, value in levels %}
-																					{% if value == dayRecord.afternoonSnackQty %}
-																						<span style="margin-right: 15px;">
-																							<img src="{{ asset ('assets/images/checked.png') }}" alt=""/>{{ value|capitalize }}
-																						</span>
-																					{% else %}
-																						<span style="margin-right: 15px;">
-																							<img src="{{ asset ('assets/images/unchecked.png') }}" alt=""/>{{ value|capitalize }}
-																						</span>
-																					{% endif %}
-																				{% endfor %}
+																				<input type="radio" name="afternoon" value="super" disabled>
+																				<label for="super">Super</label>
+																				<input type="radio" name="afternoon" value="moderate" checked="checked">
+																				<label for="moderate">Moderate</label>
+																				<input type="radio" name="afternoon" value="bad" disabled>
+																				<label for="bad">Bad</label>
 																			</div>
 																		</div>
 																	</div>
@@ -196,79 +181,45 @@
 																		<div style="text-align: left; margin-bottom: 15px;">
 																			<h4 style="text-align: left; color: #ff6f96; display: inline-block;">Napping:
 																			</h4>
-																			<span class="mkdf-pp-text" style="color: #ffffff; font-size: 20px;">{{dayRecord.napDuration}}</span>
+																			<span class="mkdf-pp-text" style="color: #ffffff; font-size: 20px;">12h05 - 13h50</span>
 																		</div>
 																		<div style="text-align: left; margin-bottom: 15px;">
 																			<h4 style="text-align: left; color: #ff6f96; display: inline-block;">Pee:
 																			</h4>
-																			{% if dayRecord.peeCount > 0 %}
-																				{% for i in 1..5 %}
-																					{% if i <= dayRecord.peeCount %}
-																						<span style="margin-right: 15px;">
-																							<img src="{{ asset ('assets/images/checked.png') }}" alt=""/>
-																						</span>
-																					{% else %}
-																						<span style="margin-right: 15px;">
-																							<img src="{{ asset ('assets/images/unchecked.png') }}" alt=""/>
-																						</span>
-																					{% endif %}
-																				{% endfor %}
-																			{% else %}
-																				{% for i in 1..5 %}
-																					<span style="margin-right: 15px;">
-																						<img src="{{ asset ('assets/images/unchecked.png') }}" alt=""/>
-																					</span>
-																				{% endfor %}
-																			{% endif %}
+																			<input type="checkbox" name="peecount" value="1" disabled checked style="background: pink;">
+																			<input type="checkbox" name="peecount" value="2" disabled checked>
+																			<input type="checkbox" name="peecount" value="3" disabled checked>
+																			<input type="checkbox" name="peecount" value="4" disabled>
+																			<input type="checkbox" name="peecount" value="5" disabled>
 																		</div>
 																		<div style="text-align: left; margin-bottom: 15px;">
 																			<h4 style="text-align: left; color: #ff6f96; display: inline-block;">Poo:
 																			</h4>
-																			{% if dayRecord.pooCount > 0 %}
-																				{% for i in 1..5 %}
-																					{% if i <= dayRecord.pooCount %}
-																						<span style="margin-right: 15px;">
-																							<img src="{{ asset ('assets/images/checked.png') }}" alt=""/>
-																						</span>
-																					{% else %}
-																						<span style="margin-right: 15px;">
-																							<img src="{{ asset ('assets/images/unchecked.png') }}" alt=""/>
-																						</span>
-																					{% endif %}
-																				{% endfor %}
-																			{% else %}
-																				{% for i in 1..5 %}
-																					<span style="margin-right: 15px;">
-																						<img src="{{ asset ('assets/images/unchecked.png') }}" alt=""/>
-																					</span>
-																				{% endfor %}
-																			{% endif %}
+																			<input type="checkbox" name="peecount" value="1" disabled checked style="background: pink;">
+																			<input type="checkbox" name="peecount" value="2" disabled>
+																			<input type="checkbox" name="peecount" value="3" disabled>
+																			<input type="checkbox" name="peecount" value="4" disabled>
+																			<input type="checkbox" name="peecount" value="5" disabled>
 																		</div>
-																		<div style="text-align: left; margin-bottom: 30px;">
-																			<h4 style="text-align: left; color: #ff6f96; display: inline-block;">Other Information:
-																			</h4>
-																			<p class="mkdf-pp-text" style="color: #ffffff; font-size: 20px; width: 400px;">
-																				{{dayRecord.otherInfo}}
-																			</p>
-
-																		</div>
+																		<p>
+																			<span class="wpcf7-form-control-wrap your-message">
+																				<textarea name="your-message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" placeholder="Potty training is ok"></textarea>
+																			</span>
+																		</p>
 																	</div>
 																</div>
 
 																<div class="mkdf-pp-text" style="color: #ffffff; font-size: 20px; margin-top: 50px;">
-																	{% for key, value in moods %}
-																		{% if value == dayRecord.daycareMood %}
-																			<span style="margin-right: 15px;">
-																				<img src="{{ asset ('assets/images/checked.png') }}" alt=""/>
-																				<img src="{{ asset ('assets/images/'~value~'.png') }}" alt=""/>{{ value|capitalize }}
-																			</span>
-																		{% else %}
-																			<span style="margin-right: 15px;">
-																				<img src="{{ asset ('assets/images/unchecked.png') }}" alt=""/>
-																				<img src="{{ asset ('assets/images/'~value~'.png') }}" alt=""/>{{ value|capitalize }}
-																			</span>
-																		{% endif %}
-																	{% endfor %}
+																	<input type="radio" name="daycare_mood" value="happy" checked="checked">
+																	<label for="happy"><img src="{{ asset ('assets/images/happy.png') }}" alt=""/>Happy</label>
+																	<input type="radio" name="daycare_mood" value="unhappy" disabled>
+																	<label for="unhappy"><img src="{{ asset ('assets/images/unhappy.png') }}" alt=""/>Unhappy</label>
+																	<input type="radio" name="daycare_mood" value="tired" disabled>
+																	<label for="tired"><img src="{{ asset ('assets/images/tired.png') }}" alt=""/>Tired</label>
+																	<input type="radio" name="daycare_mood" value="cry" disabled>
+																	<label for="cry"><img src="{{ asset ('assets/images/cry.png') }}" alt=""/>Cry</label>
+																	<input type="radio" name="daycare_mood" value="sick" disabled>
+																	<label for="sick"><img src="{{ asset ('assets/images/sick.png') }}" alt=""/>Sick</label>
 																</div>
 															</div>
 														</div>

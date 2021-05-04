@@ -51,7 +51,7 @@ class FrontController extends AbstractController
     #[Route('/test/date', name: 'testDate')]
     public function testDate()
     {
-        $today = new \DateTime('NOW');
+        $today = new \DateTime('today');
         $clone = clone $today;
         $dayListString = [$today->format( 'd-m-Y' )];
         $dayListDT = [];
@@ -61,12 +61,24 @@ class FrontController extends AbstractController
         }        
 
         foreach ($dayListString as $dayString) {
-            $dayDT = \DateTime::createFromFormat('d-m-Y', $dayString);
+            $dayDT = new \DateTime ($dayString);
             array_push($dayListDT, $dayDT);
         }
         
         dump($dayListString);
         dd($dayListDT);
+
+        /////////////////////////////
+
+        // $today = new \DateTime('today');
+        // $todayStr = $today->format('d-m-Y');
+
+        // $my_date = new \DateTime($todayStr);
+
+        // dump($today);
+        // dump($todayStr);
+        // dump($my_date);
+        // die();
     }
 
         // test Boolean
