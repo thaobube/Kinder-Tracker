@@ -86,8 +86,10 @@ class ParentController extends AbstractController
         return $this->render('parent/today.html.twig', $vars);
     }
 
-    #[Route('/parent/past/day', name: 'past_day')]
-    public function pastDay()
+    
+    
+    #[Route('/parent/yesterday', name: 'yesterday')]
+    public function yesterday()
     {
         $user = $this->getUser();
         $child = $user->getChild();
@@ -95,7 +97,7 @@ class ParentController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository(DayRecord::class);
 
-        // example: take the date:(yesterday)
+        // get the date - yesterday
         $today = new \DateTime('today');
         $clone = clone $today;
         $yesterday = $clone->modify( '-1 day' );
@@ -124,7 +126,7 @@ class ParentController extends AbstractController
             'levels' => $levels
         ];
 
-        return $this->render('parent/past_day.html.twig', $vars);
+        return $this->render('parent/yesterday.html.twig', $vars);
     }
 
     #[Route('/parent/test', name: 'parent_test')]

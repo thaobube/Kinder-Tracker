@@ -28,46 +28,16 @@
 											<div class="mkdf-eh-item-content mkdf-eh-custom-6625" style="padding: 0 0 0 45px ">
 												<div class="mkdf-section-title-holder   mkdf-st-subtitle-pos-under">
 													<div class="mkdf-st-inner">
-														<h2 class="mkdf-st-title">
-															{{child.firstName}}'s Profile
-														</h2>
-														<a href="{{ path ("profile_edit") }}" class="mkdf-st-subtitle" style="color: #ffffff;background-color: #dce086;margin: 13px 0 ">
-															Edit Profile
-														</a href>
+														<h2>Profile</h2>
+
 													</div>
 												</div>
 												<div class="vc_row wpb_row vc_inner vc_row-fluid vc_custom_1525776781542" style="border-color: #dce086;border-width: 2px;border-style: dashed;border-radius: 10px; margin-top: 30px; padding-top: 20px;">
-													<div class="wpb_column vc_column_container vc_col-sm-6">
-														<div class="vc_column-inner">
-															<div class="wpb_wrapper">
-																<div class="mkdf-icon-list-holder " style="margin-bottom: 15px">
-																	<p class="mkdf-il-text" style="padding-left: 20px">Date of Birth: {{child.birthDate|date('d-m-Y')}}</p>
-																</div>
+												{{ form_start(editProfile)}}
+												{{ form_widget(editProfile)}}
+												<input type="submit" class="mkdf-st-subtitle" style="color: #ffffff;background-color: #dce086;margin: 13px 0; border: white solid 1px; padding: 10px; border-radius: 5px; font-weight: bold; font-size: 18px; " value="Update"/>
+												{{ form_end(editProfile)}}
 
-																<div class="mkdf-icon-list-holder " style="margin-bottom: 15px">
-																	<p class="mkdf-il-text" style="padding-left: 20px">Address: {{child.address}}</p>
-																</div>
-																<div class="mkdf-icon-list-holder " style="margin-bottom: 15px">
-																	<p class="mkdf-il-text" style="padding-left: 20px">Class: {{child.class}}</p>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="wpb_column vc_column_container vc_col-sm-6">
-														<div class="vc_column-inner">
-															<div class="wpb_wrapper">
-																<div class="mkdf-icon-list-holder " style="margin-bottom: 15px">
-																	<p class="mkdf-il-text" style="padding-left: 20px">Parent's Email: {{child.parentEmail}}</p>
-																</div>
-																<div class="mkdf-icon-list-holder " style="margin-bottom: 15px">
-																	<p class="mkdf-il-text" style="padding-left: 20px">Father's Mobile: {{child.fatherPhone}}</p>
-																</div>
-																<div class="mkdf-icon-list-holder " style="margin-bottom: 15px">
-																	<p class="mkdf-il-text" style="padding-left: 20px">Mother's Mobile: {{child.motherPhone}}</p>
-																</div>
-															</div>
-														</div>
-													</div>
 												</div>
 											</div>
 										</div>
