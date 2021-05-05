@@ -128,8 +128,8 @@ class FormController extends AbstractController
 
     #[Route('/parent/today/edit', name: 'today_edit')]
     public function todayEdit(Request $req)
-    {
-        
+    {       
+
         $user = $this->getUser();
         $child = $user->getChild();
 

@@ -148,9 +148,11 @@ class ParentController extends AbstractController
         }
     }
 
+    
     #[Route('/parent/test', name: 'parent_test')]
     public function parentTest()
-    {
+    { 
+
         $user = $this->getUser();
         $child = $user->getChild();
         dump($child);
@@ -174,6 +176,7 @@ class ParentController extends AbstractController
         
 
         dump($dayRecordOfOneChild);
+
         die();
     }
 }
