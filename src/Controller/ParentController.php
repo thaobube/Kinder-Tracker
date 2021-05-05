@@ -35,19 +35,6 @@ class ParentController extends AbstractController
         return $this->render('parent/child_profile.html.twig', $vars);
     }
 
-    #[Route('/parent/inform', name: 'inform')]
-    public function inform()
-    {
-        $user = $this->getUser();
-        $child = $user->getChild();
-
-        $vars = [
-            'child' =>$child
-        ];
-
-        return $this->render('parent/inform.html.twig', $vars);
-    }
-
     #[Route('/parent/today', name: 'today')]
     public function today()
     {
@@ -83,7 +70,12 @@ class ParentController extends AbstractController
             'levels' => $levels
         ];
 
-        return $this->render('parent/today.html.twig', $vars);
+        if ($dayRecordOfOneChild->getIsAtHome() == false) {
+            return $this->render('parent/today.html.twig', $vars);
+        }
+        else{
+            return $this->render('parent/today_at_home.html.twig', $vars);
+        }
     }
 
     
@@ -126,7 +118,12 @@ class ParentController extends AbstractController
             'levels' => $levels
         ];
 
-        return $this->render('parent/yesterday.html.twig', $vars);
+        if ($dayRecordOfOneChild->getIsAtHome() == false) {
+            return $this->render('parent/yesterday.html.twig', $vars);
+        }
+        else{
+            return $this->render('parent/yesterday_at_home.html.twig', $vars);
+        }
     }
 
     #[Route('/parent/test', name: 'parent_test')]
