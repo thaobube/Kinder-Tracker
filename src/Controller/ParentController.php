@@ -45,11 +45,32 @@ class ParentController extends AbstractController
         $rep = $em->getRepository(DayRecord::class);
 
         $today = new \DateTime('today');
-
         $dayRecordOfOneChild = $rep->findOneBy([
             'Child' => $child,
             'date' => $today
             ]);
+
+        if ($dayRecordOfOneChild == null) {
+            $dayRecordOfOneChild = new DayRecord([
+                'date' => $today,
+                'isAtHome' => null,
+                'reasonAtHome' => null,
+                'homeDescription' =>null,
+                'morningSnackFood' =>null,
+                'lunchSnackQty' =>null,
+                'lunchFood' =>null,
+                'lunchQty' =>null,
+                'afternoonSnackFood' =>null,
+                'afternoonSnackQty' =>null,
+                'peeCount' =>null,
+                'pooCount' =>null,
+                'napDuration' =>null,
+                'otherInfo' =>null,
+                'homeMood' =>null,
+                'daycareMood' =>null,
+                'child' => $child
+            ]);
+        }
         
         $moods = [
             0 => 'Happy',
@@ -69,13 +90,14 @@ class ParentController extends AbstractController
             'moods' => $moods,
             'levels' => $levels
         ];
-
-        if ($dayRecordOfOneChild->getIsAtHome() == false) {
-            return $this->render('parent/today.html.twig', $vars);
-        }
-        else{
+        
+        if ($dayRecordOfOneChild->getIsAtHome() == true) {
             return $this->render('parent/today_at_home.html.twig', $vars);
         }
+        else{
+            return $this->render('parent/today.html.twig', $vars);
+        }
+
     }
 
     

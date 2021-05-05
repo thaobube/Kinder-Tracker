@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Form\AtHomeType;
 use App\Form\ChildType;
 use App\Entity\DayRecord;
+use App\Form\InformType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -54,9 +56,40 @@ class FormController extends AbstractController
             'Child' => $child,
             'date' => $today
             ]);
-        
-        $formAtHome = $this->createForm(AtHomeType::class, $dayRecordOfOneChild , [
-            'action' => $this->generateUrl('today_edit'),
+        if ($dayRecordOfOneChild == null) {
+            $dayRecordOfOneChild = new DayRecord([
+                'date' => $today,
+                'isAtHome' => null,
+                'reasonAtHome' => null,
+                'homeDescription' =>null,
+                'morningSnackFood' =>null,
+                'lunchSnackQty' =>null,
+                'lunchFood' =>null,
+                'lunchQty' =>null,
+                'afternoonSnackFood' =>null,
+                'afternoonSnackQty' =>null,
+                'peeCount' =>null,
+                'pooCount' =>null,
+                'napDuration' =>null,
+                'otherInfo' =>null,
+                'homeMood' =>null,
+                'daycareMood' =>null,
+                'child' => $child
+            ]);
+        }
+        $moods = [
+            0 => 'Happy',
+            1 => 'Unhappy',
+            2 => 'Tired',
+            3 => 'Cry',
+            4 => 'Sick'];
+
+        $levels = [
+            0 => 'Super',
+            1 => 'Moderate',
+            2 => 'Bad'];
+        $formAtHome = $this->createForm(InformType::class, $dayRecordOfOneChild , [
+            'action' => $this->generateUrl('inform'),
             'method' => 'POST'
         ]);
 
@@ -66,17 +99,29 @@ class FormController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($dayRecordOfOneChild);
             $em->flush();
-            return $this->render('/parent/today.html.twig', [
-                'dayRecord' => $dayRecordOfOneChild, 
-                'child' =>$child,
-                ]);
+
+            if ($dayRecordOfOneChild->getIsAtHome() == true) {
+                return $this->render('/parent/today_at_home.html.twig', [
+                    'dayRecord' => $dayRecordOfOneChild, 
+                    'child' =>$child,
+                    ]);
+                }
+                else{
+                return $this->render('/parent/today.html.twig', [
+                    'dayRecord' => $dayRecordOfOneChild, 
+                    'child' =>$child,
+                    'moods' => $moods,
+                    'levels' => $levels
+                    ]);
+            }
+
         }
         else {
-            $vars = ['editToday' => $formAtHome->createView(),
+            $vars = ['inform' => $formAtHome->createView(),
                      'child'    => $child,
                      'dayRecord' => $dayRecordOfOneChild
                     ];        
-            return $this->render('/parent/today_edit.html.twig', $vars);
+            return $this->render('/parent/inform.html.twig', $vars);
         }
     }
 
@@ -97,7 +142,27 @@ class FormController extends AbstractController
             'Child' => $child,
             'date' => $today
             ]);
-
+        if ($dayRecordOfOneChild == null) {
+            $dayRecordOfOneChild = new DayRecord([
+                'date' => $today,
+                'isAtHome' => null,
+                'reasonAtHome' => null,
+                'homeDescription' =>null,
+                'morningSnackFood' =>null,
+                'lunchSnackQty' =>null,
+                'lunchFood' =>null,
+                'lunchQty' =>null,
+                'afternoonSnackFood' =>null,
+                'afternoonSnackQty' =>null,
+                'peeCount' =>null,
+                'pooCount' =>null,
+                'napDuration' =>null,
+                'otherInfo' =>null,
+                'homeMood' =>null,
+                'daycareMood' =>null,
+                'child' => $child
+            ]);
+        }
         $moods = [
             0 => 'Happy',
             1 => 'Unhappy',
@@ -137,7 +202,7 @@ class FormController extends AbstractController
         }
     }
 
-    #[Route('/parent/today/edit', name: 'today_at_home_edit')]
+    #[Route('/parent/today/at/home/edit', name: 'today_at_home_edit')]
     public function todayAtHomeEdit(Request $req)
     {
         
@@ -153,21 +218,9 @@ class FormController extends AbstractController
             'Child' => $child,
             'date' => $today
             ]);
-
-        $moods = [
-            0 => 'Happy',
-            1 => 'Unhappy',
-            2 => 'Tired',
-            3 => 'Cry',
-            4 => 'Sick'];
-
-        $levels = [
-            0 => 'Super',
-            1 => 'Moderate',
-            2 => 'Bad'];
         
-        $formAtHome = $this->createForm(AtHomeType::class, $dayRecordOfOneChild , [
-            'action' => $this->generateUrl('today_edit'),
+        $formAtHome = $this->createForm(InformType::class, $dayRecordOfOneChild , [
+            'action' => $this->generateUrl('inform'),
             'method' => 'POST'
         ]);
 
@@ -177,19 +230,18 @@ class FormController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($dayRecordOfOneChild);
             $em->flush();
-            return $this->render('/parent/today.html.twig', [
+
+            return $this->render('/parent/today_at_home.html.twig', [
                 'dayRecord' => $dayRecordOfOneChild, 
                 'child' =>$child,
-                'moods' => $moods,
-                'levels' => $levels
                 ]);
         }
         else {
-            $vars = ['editToday' => $formAtHome->createView(),
+            $vars = ['inform' => $formAtHome->createView(),
                      'child'    => $child,
                      'dayRecord' => $dayRecordOfOneChild
                     ];        
-            return $this->render('/parent/today_edit.html.twig', $vars);
+            return $this->render('/parent/inform.html.twig', $vars);
         }
     }
 }
